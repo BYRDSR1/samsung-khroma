@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en-us" class="h-100">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width,initial-scale=1" />
+		<title>Khroma</title>
+		<link rel="icon" href="../images/khroma-icon.ico" />
+		<link rel="shortcut icon" href="../images/khroma-icon.ico" />
+		<link rel="apple-touch-icon" href = "../images/khroma-icon.png" />
+		<link rel="icon" sizes="100x100" href = "../images/khroma-icon.png" />
+		<!-- Start Bootstrap CDN -->
+		 <!-- Latest compiled and minified CSS -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+		<!-- jQuery library -->
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+		<!-- Popper JS -->
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+		<!-- Latest compiled JavaScript -->
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script> 
+		<!-- End Bootstrap CDN -->
+		<!-- FontAwesome -->
+		<!--<script src="https://kit.fontawesome.com/5a58bd0200.js" crossorigin="anonymous"></script>-->
+		<link rel="stylesheet" href="../fontawesome-free-5.15.4-web/css/all.css" />
+		<!-- content.js -->
+		<script src="../scripts/content.js" defer></script>
+		<!-- video and color functions -->
+		<script src="../scripts/video-colors.js"></script>
+		<style>
+			@media (prefers-color-scheme: light) {
+				body {
+					background-color: #F0F0F0;
+					color: black;
+				}
+				.navbar {
+				  background-color: #A0A0A0;
+				}
+			}
+
+			@media (prefers-color-scheme: dark) {
+				body {
+					background-color: black;
+					color: white;
+				}
+				.navbar {
+					background-color: #2E2E2E;
+				}
+			}
+
+			
+		</style>
+		<script>
+			const openVideo = () => {
+				switchPage("videopage");
+			} 
+			const openHome = () => {
+				switchPage("homepage");
+			}
+			const openPic = () => {
+				switchPage("videopage");
+			}
+		</script>
+	</head>
+	<body class="h-100">
+		<div id="outer-wrapper" class="w-100 h-100 d-flex container-fluid justify-content-center">
+			<div id="homepage-wrapper" class="w-100 h-100 d-flex justify-content-center container-fluid" hidden="false">
+				<div id="top-button"class="py-3 h-30 navbar navbar-nav fixed-top justify-content-center">
+					<i class="far fa-image fa-2x"></i>
+				</div>
+				<div id="homepage-main" class= "w-100 py-5 row flex-row justify-content-center align-self-center">
+					<div id="homepage-main-content" class="w-100 h-100 py-3 flex-row justify-content-center align-self-center align-content-around">
+						<div id="homepage-name" class="h-50">
+							<h1 class="text-center">Khroma</h1>
+						</div>
+						<br />
+						<div id="homepage-utils" class="d-flex container h-50 flex-row justify-content-around">
+							<div id="homepage-help" class="flex-fill">
+								<i class="fas fa-question fa-2x d-flex justify-content-center"></i>
+							</div>
+							<div id="homepage-settings" class="flex-fill">
+								<i class="fas fa-cog fa-2x d-flex justify-content-center" onclick="openSettings()"></i>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div id="bottom-button" class="py-3 h-30 navbar navbar-nav fixed-bottom justify-content-center" onclick="openVideo()">
+					<i class="fas fa-camera fa-2x"></i>
+				</div>
+			</div>
+		</div>
+		<script id="utils-script">
+			const adjustHomepageUtils = () => {
+				const width = document.documentElement.clientWidth;
+				const height = document.documentElement.clientHeight;
+				if(document.getElementById("homepage-wrapper")) {
+					const utils = document.getElementById("homepage-utils");
+					if(width < 493) {
+						utils.classList.contains("justify-content-around") ? null : (() => {
+							utils.classList.contains("justify-content-center") ? (()=>{
+								utils.classList.remove("justify-content-center");
+								utils.classList.add("justify-content-around");
+							})()
+							: utils.classList.add("justify-content-around");
+						})();
+						utils.classList.contains("w-50") ? utils.classList.remove("w-50") : null;
+					} else {
+						utils.classList.contains("justify-content-center") ? null : (() => {
+							utils.classList.contains("justify-content-around") ? (() => {
+								utils.classList.remove("justify-content-around");
+								utils.classList.add("justify-content-center");
+							})()
+							: utils.classList.add("justify-content-center");
+						})();
+						utils.classList.contains("w-50") ? null : utils.classList.add("w-50");
+					}		
+				} else if(document.getElementById("video-wrapper")) {
+					const video = document.getElementById("video");
+					const canvas = document.getElementById("canvas");
+					if(videoLayout === "landscape") {
+						video.width = width;
+						video.height = (3 / 4) * width;
+					} else {
+						video.width = (3 / 4) * height;
+						video.height = height;
+					}
+				}
+			}
+			window.onload = () => { switchPage("homepage"); };
+			window.addEventListener("DOMContentLoaded", adjustHomepageUtils);
+			document.body.onresize = () => {adjustHomepageUtils()}
+
+		</script>
+	</body>
+</html>
