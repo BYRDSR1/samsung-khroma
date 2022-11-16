@@ -16,7 +16,7 @@ const videoSetup = async () => {
 }
 
 const errBack = () => {
-	document.getElementById("video-main").insertAdjacentHTML("afterbegin", '<div class="w-100 h-100 row flex-row align-self-center justify-content-center"><h4 class="align-self-center text-center font-weight-bold" style="margin-top: 50%;">Sorry, You Need to Enable Camera Access in Settings</h4></div>');
+	document.getElementById("video-main").insertAdjacentHTML("afterbegin", '<div class="w-100 h-100 row flex-row align-self-center justify-content-center"><h4 class="align-self-center text-center font-weight-bold">Sorry, You Need to Enable Camera Access in Settings</h4></div>');
 	document.getElementById("video-bottom-bar").children[0].insertAdjacentHTML("afterbegin", '<i class="far fa-frown fa-2x"></i>');
 	//switchPage("homepage");
 }
