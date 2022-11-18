@@ -2848,7 +2848,7 @@
 		input[type="reset"].primary,
 		input[type="button"].primary,
 		.button.primary {
-			background-color: #e89980;
+			background-color: #5797aa;
 			color: #ffffff !important;
 		}
 
@@ -2856,14 +2856,14 @@
 			input[type="reset"].primary:hover,
 			input[type="button"].primary:hover,
 			.button.primary:hover {
-				background-color: #ecaa96;
+				background-color: #5797aa;
 			}
 
 			input[type="submit"].primary:active,
 			input[type="reset"].primary:active,
 			input[type="button"].primary:active,
 			.button.primary:active {
-				background-color: #e4886a;
+				background-color: #5797aa;
 			}
 
 		input[type="submit"].disabled, input[type="submit"]:disabled,
@@ -3163,7 +3163,7 @@
 	#banner {
 		background-attachment: scroll,							fixed;
 		background-color: #666;
-		background-image: url("images/sunset.jpeg");
+		background-image: url("../images/sunset.jpeg");
 		background-position:	center center;
 		background-repeat: no-repeat;
 		background-size: 	cover;
