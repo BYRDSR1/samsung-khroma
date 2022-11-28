@@ -16,9 +16,7 @@ const videoSetup = async () => {
 }
 
 const errBack = () => {
-	document.getElementById("video-main").insertAdjacentHTML("afterbegin", '<div class="w-100 h-100 row flex-row align-self-center justify-content-center"><h4 class="align-self-center text-center font-weight-bold">Sorry, You Need to Enable Camera Access in Settings</h4></div>');
-	document.getElementById("video-bottom-bar").children[0].insertAdjacentHTML("afterbegin", '<i class="far fa-frown fa-2x"></i>');
-	//switchPage("homepage");
+  //Add error-functions here
 }
 
 const videoFeed = () => {
@@ -51,11 +49,18 @@ const videoFeed = () => {
 	
         video.srcObject = stream;
         video.play();
+        
+        //This decides whether to put the light or dark crosshairs
 				if(window.matchMedia("(prefers-color-scheme: dark)").matches) {
-					document.getElementById("video-main").insertAdjacentHTML("afterbegin", '<img src="../images/crosshairs-light.png" class="img-fluid align-self-center" style="position: absolute;z-index: 3" />');
+          //LIGHT MODE
+
+					//document.getElementById("video-main").insertAdjacentHTML("afterbegin", '<img src="../images/crosshairs-light.png" class="img-fluid align-self-center" style="position: absolute;z-index: 3" />');
 				} else {
-					document.getElementById("video-main").insertAdjacentHTML("afterbegin", '<img src="../images/crosshairs-dark.png" class="img-fluid align-self-center" style="position: absolute;z-index: 3" />');
+          //DARK MODE
+
+					//document.getElementById("video-main").insertAdjacentHTML("afterbegin", '<img src="../images/crosshairs-dark.png" class="img-fluid align-self-center" style="position: absolute;z-index: 3" />');
 				}
+
  	intervalID = setInterval(colorStuff, 1000);	
     }, errBack);
 	} else if(navigator.getUserMedia) { // Standard
@@ -82,7 +87,9 @@ const stopInterval = () => {
 	intervalID = undefined;
 }
 
-/* const convertNumberToHex = (num) => {
+//BEGIN HEX STUFF
+
+const convertNumberToHex = (num) => {
 	if(num > 9) {
 		switch(num) {
 			case 10:
@@ -130,9 +137,11 @@ const convertRGBAToHex = (rgba) => {
 		}
 	}
 	return rgba[3] ? [hex, rgba[3]] : [hex];
-} */
+}
 
-let debateableColors = {
+//END HEX STUFF
+
+let debatableColors = {
 	mOrB: [
 		
 	],
@@ -140,20 +149,20 @@ let debateableColors = {
 
 const determineDebateableColor = (color) => {
 	if(color == "Maroon" || color == "Brown") {
-		if(debateableColors.mOrB[0]) {
+		if(debatableColors.mOrB[0]) {
 			let browns = maroons = 0;
-			for(let i = 0; i < debateableColors.mOrB.length; i++) {
-				if(debateableColors.mOrB[i] == "brown") {
+			for(let i = 0; i < debatableColors.mOrB.length; i++) {
+				if(debatableColors.mOrB[i] == "brown") {
 					browns++;
 				} else {
 					maroons++;
 				}
 			}
 			console.log(browns, maroons)
-			debateableColors.mOrB.length < 10 ? debateableColors.mOrB.push(color.toLowerCase()) : (()=>{debateableColors.mOrB.shift();debateableColors.mOrB.push(color.toLowerCase())})();
+			debatableColors.mOrB.length < 10 ? debatableColors.mOrB.push(color.toLowerCase()) : (()=>{debatableColors.mOrB.shift();debatableColors.mOrB.push(color.toLowerCase())})();
 			return browns >= maroons ? "Brown" : "Maroon";
 		} else {
-			debateableColors.mOrB.push(color.toLowerCase());
+			debatableColors.mOrB.push(color.toLowerCase());
 			return color;
 		}
 	} 
@@ -441,7 +450,7 @@ const identifyColor = (rgb) => {
 			//let n_color = ntc.name(findColor(rgb))[1];
 			//console.log(n_color);
 			//console.log("hue: ", getExactHue(getHue(rgb), calcLightness(rgb), findShade(rgb)), "\nlightness: ", calcLightness(rgb), "\nrough hue: ", getHue(rgb), "\nred: ", rgb[0], " green: ", rgb[1], " blue: ", rgb[2]);
-			getExactHue(getHue(rgb), calcLightness(rgb), findShade(rgb)) !== "Maroon" || getExactHue(getHue(rgb), calcLightness(rgb), findShade(rgb)) !== "Brown" ? debateableColors.mOrB = [] : null;
+			getExactHue(getHue(rgb), calcLightness(rgb), findShade(rgb)) !== "Maroon" || getExactHue(getHue(rgb), calcLightness(rgb), findShade(rgb)) !== "Brown" ? debatableColors.mOrB = [] : null;
 			document.getElementById("video-bottom-bar").children[0].innerHTML = getExactHue(getHue(rgb), calcLightness(rgb), findShade(rgb));
 			
 			//document.body.style.backgroundColor = "rgb(" + rgb[0]+ ", " + rgb[1] + ", " + rgb[2] + ")";
