@@ -159,7 +159,7 @@ const determineDebateableColor = (color) => {
 				}
 			}
 			console.log(browns, maroons)
-			debatableColors.mOrB.length < 10 ? debateableColors.mOrB.push(color.toLowerCase()) : (()=>{debateableColors.mOrB.shift();debateableColors.mOrB.push(color.toLowerCase())})();
+			debatableColors.mOrB.length < 10 ? debatableColors.mOrB.push(color.toLowerCase()) : (()=>{debatableColors.mOrB.shift();debatableColors.mOrB.push(color.toLowerCase())})();
 			return browns >= maroons ? "Brown" : "Maroon";
 		} else {
 			debatableColors.mOrB.push(color.toLowerCase());
