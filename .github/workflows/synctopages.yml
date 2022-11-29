@@ -18,4 +18,5 @@ jobs:
         run: |
           git status
           git branch
-          git subtree push --prefix public origin gh-pages
+          ls
+        
