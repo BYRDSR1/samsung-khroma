@@ -2732,6 +2732,16 @@
 				border-top: 0;
 			}
 
+
+			.camera{
+				width: 20%;
+			}
+
+
+
+
+
+
 /* Button */
 
 	input[type="submit"],
@@ -2753,12 +2763,13 @@
 		cursor: pointer;
 		display: inline-block;
 		font-weight: 400;
-		height: 3em;
-		line-height: 3em;
+		height: 4.7em;
+		line-height: 1em;
 		padding: 0 2em;
 		text-align: center;
 		text-decoration: none;
 		white-space: nowrap;
+		
 	}
 
 		input[type="submit"]:hover,
@@ -2848,6 +2859,8 @@
 		input[type="reset"].primary,
 		input[type="button"].primary,
 		.button.primary {
+			justify-content: center;
+			
 			background-color: #5797aa;
 			color: #3699d3 !important;
 		}
