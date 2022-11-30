@@ -14,9 +14,17 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: 12
+      - name: branch gh-pages
+        run: |
+          git branch gh-pages
+          git checkout gh-pages
+          git status
+          ls
+          git checkout main
+          git branch -D gh-pages
       - name: Sync
         run: |
           git status
-          git branch
-          git push origin $(git subtree split --prefix=public --onto=origin/gh-pages):gh-pages
+          #git branch
+          #git push origin $(git subtree split --prefix=public --onto=origin/gh-pages):gh-pages
         
