@@ -1,8 +1,8 @@
 name: Sync main to gh-pages
-on:
-  push:
-    branches:
-      - main
+on: [workflow_dispatch]
+#  push:
+ #     branches:
+  #      - main
 jobs:
   sync-branches:
     runs-on: ubuntu-latest
