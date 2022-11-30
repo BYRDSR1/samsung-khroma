@@ -24,8 +24,12 @@ jobs:
           git config user.name "GitHub Actions Bot"
           git config user.email "<>"
           
-          # git pull origin gh-pages --allow-unrelated-histories
-          git push origin $(git subtree split --prefix=public --onto=origin/gh-pages):gh-pages
+          shopt -s extglob
+          rm -rf !(public)
+          mv public/* ./
+          rm -rf public
+          git push origin gh-pages
+        
           ls
           git checkout main
           git branch -D gh-pages
