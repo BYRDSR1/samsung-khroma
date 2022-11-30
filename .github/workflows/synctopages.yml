@@ -18,6 +18,5 @@ jobs:
         run: |
           git status
           git branch
-          git pull origin main
-          git subtree push --prefix public origin gh-pages
+          git remote add origin https://github.com/BYRDSR1/samsung-khroma.git
         
