@@ -19,14 +19,19 @@ jobs:
           git branch gh-pages
           git checkout gh-pages
           git status
+          
           git config pull.rebase false
-          git pull origin gh-pages --allow-unrelated-histories
+          git config user.name "GitHub Actions Bot"
+          git config user.email "<>"
+          
+          # git pull origin gh-pages --allow-unrelated-histories
+          git push origin $(git subtree split --prefix=public --onto=origin/gh-pages):gh-pages
           ls
           git checkout main
           git branch -D gh-pages
       - name: Sync
         run: |
           git status
-          #git branch
-          #git push origin $(git subtree split --prefix=public --onto=origin/gh-pages):gh-pages
+          # git branch
+          # git push origin $(git subtree split --prefix=public --onto=origin/gh-pages):gh-pages
         
