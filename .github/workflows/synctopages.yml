@@ -19,6 +19,7 @@ jobs:
           git branch gh-pages
           git checkout gh-pages
           git status
+          git pull origin gh-pages --allow-unrelated-histories
           ls
           git checkout main
           git branch -D gh-pages
