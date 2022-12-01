@@ -3,7 +3,7 @@ let videoLayout = undefined;
 
 const videoSetup = async () => {
 	if(navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
-		const wrapper = document.getElementById("video-main");
+		const wrapper = document.getElementById("video-wrapper");
 		const video = document.createElement("video");
 		video.id = "video";
 		video.width = document.documentElement.clientWidth;
@@ -451,7 +451,9 @@ const identifyColor = (rgb) => {
 			//console.log(n_color);
 			//console.log("hue: ", getExactHue(getHue(rgb), calcLightness(rgb), findShade(rgb)), "\nlightness: ", calcLightness(rgb), "\nrough hue: ", getHue(rgb), "\nred: ", rgb[0], " green: ", rgb[1], " blue: ", rgb[2]);
 			getExactHue(getHue(rgb), calcLightness(rgb), findShade(rgb)) !== "Maroon" || getExactHue(getHue(rgb), calcLightness(rgb), findShade(rgb)) !== "Brown" ? debatableColors.mOrB = [] : null;
-			document.getElementById("video-bottom-bar").children[0].innerHTML = getExactHue(getHue(rgb), calcLightness(rgb), findShade(rgb));
+			document.getElementById("color-display").children[0].innerHTML = getExactHue(getHue(rgb), calcLightness(rgb), findShade(rgb));
+			document.getElementById("color-display").children[1].innerHTML = convertRGBAToHex(rgb)[0];
+			document.getElementById("color-display").children[1].style["color"] = convertRGBAToHex(rgb)[0].toString();
 			
 			//document.body.style.backgroundColor = "rgb(" + rgb[0]+ ", " + rgb[1] + ", " + rgb[2] + ")";
 } 
