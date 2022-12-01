@@ -11,6 +11,9 @@
 ## Pages
 &nbsp;&nbsp;The GitHub Pages webiste can bere found [here](https://byrdsr1.github.io/khroma/public/index.html)
 
+## Update Website
+run: `git subtree push --prefix public origin gh-pages`
+
 ## Contributing
 &nbsp;&nbsp;Currently, this is a solo-project for the code itself, but contributions to the wiki documentation would be much appreciated. 
 
