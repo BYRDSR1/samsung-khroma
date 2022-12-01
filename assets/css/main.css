@@ -2475,7 +2475,7 @@ input[type="radio"]+label:before {
 	margin: auto;
 	display: block;
 	background-color:#666;
-	border-radius: 100%;
+	border-radius: 30%;
 }
 
 .icon {
@@ -2763,7 +2763,7 @@ ul.actions.fit.stacked {
 	ul.actions:not(.fixed) li input[type="reset"],
 	ul.actions:not(.fixed) li input[type="button"],
 	ul.actions:not(.fixed) li button,
-	ul.actions:not(.fixed) li .button {
+	ul.actions:nFot(.fixed) li .button {
 		width: 100%;
 	}
 
